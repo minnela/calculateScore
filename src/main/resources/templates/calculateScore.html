@@ -73,9 +73,9 @@
             <input type="text" class="form-control" id="validationTooltip04" placeholder="Enter Mobile Number" aria-describedby="validationTooltipUsernamePrepend" th:field="*{mobilePhoneNumber}"/>
         </div>
     </div>
-    <div class="col-md-4 mb-3" th:object="${cities}">
-        <select class="form-control form-control-sm" id="agentName">
-            <option value="">Select an agent</option>
+    <div class="col-md-4 mb-3">
+        <select class="form-control form-control-sm" id="agentName" th:field="*{city}">
+            <option value="" th:object="${cities}">Select an agent</option>
             <option th:each="city:${cities}"
                     th:value="${city.cityName}"
                     th:text="${city.cityName}">
