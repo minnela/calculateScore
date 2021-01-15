@@ -20,8 +20,9 @@ public class Person {
     @Column(name="mobile_no")
     private int mobilePhoneNumber;
 
-    @Column(name="city")
-    private String city;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_name")
+    private City city;
 
     public Person() {
     }
@@ -30,7 +31,7 @@ public class Person {
         this.identity_number = identity_number;
     }
 
-    public Person(String city) {
+    public Person(City city) {
         this.city = city;
     }
 
@@ -74,11 +75,11 @@ public class Person {
         this.mobilePhoneNumber = mobilePhoneNumber;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 }
