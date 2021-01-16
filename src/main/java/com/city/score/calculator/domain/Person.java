@@ -22,17 +22,13 @@ public class Person {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_name")
-    private City city;
+    private City cityName;
 
     public Person() {
     }
 
     public Person(int identity_number) {
         this.identity_number = identity_number;
-    }
-
-    public Person(City city) {
-        this.city = city;
     }
 
     public int getIdentity_number() {
@@ -76,10 +72,10 @@ public class Person {
     }
 
     public City getCity() {
-        return city;
+        return cityName;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setCity(City cityName) {
+        this.cityName = cityName;
     }
 }

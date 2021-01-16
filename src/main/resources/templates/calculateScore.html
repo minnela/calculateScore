@@ -53,29 +53,28 @@
                 Looks good!
             </div>
         </div>
-        <div class="dropdown show">
-            <label>       </label>
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:field="*{salary}">
-                Select Monthly Income
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">0-2999TL</a>
-                <a class="dropdown-item" href="#">3000TL-4999TL</a>
-                <a class="dropdown-item" href="#">5000TL-7999TL</a>
-                <a class="dropdown-item" href="#">8000TL-11999TL</a>
-                <a class="dropdown-item" href="#">12000TL ve üzeri</a>
-            </div>
+        <div class="col-md-4 mb-3">
+            <label>Monthly Income</label>
+            <select class="form-control form-control-sm" id="salaryName" th:field="*{salary}">
+                <option value="0" >Select Monthly Income</option>
+                <option th:value="800">0-2999TL</option>
+                <option th:value="1000">3000TL-4999TL</option>
+                <option th:value="1200">5000TL-7999TL</option>
+                <option th:value="1500">8000TL-11999TL</option>
+                <option th:value="2000">12000TL ve üzeri</option>
+            </select>
         </div>
-    </div>
     <div class="col-md-4 mb-3">
         <label>Mobile Number</label>
         <div class="input-group">
             <input type="text" class="form-control" id="validationTooltip04" placeholder="Enter Mobile Number" aria-describedby="validationTooltipUsernamePrepend" th:field="*{mobilePhoneNumber}"/>
         </div>
     </div>
+    </div>
     <div class="col-md-4 mb-3">
-        <select class="form-control form-control-sm" id="agentName" th:field="*{city}">
-            <option value="" th:object="${cities}">Select an agent</option>
+        <label>City</label>
+        <select class="form-control form-control-sm" id="cityName" th:object="${cities}">
+            <option value="">Select an agent</option>
             <option th:each="city:${cities}"
                     th:value="${city.cityName}"
                     th:text="${city.cityName}">
@@ -85,8 +84,6 @@
 
     <button class="btn btn-primary" type="submit">Calculate Score</button>
 </form>
-
-
 
 
 

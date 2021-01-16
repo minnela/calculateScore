@@ -12,16 +12,11 @@ public class Score {
     @Column(name="score")
     private int score;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "identity_number")
-    private Person person;
-
     public Score() {
     }
 
     public Score(int score, Person person) {
         this.score = score;
-        this.person = person;
     }
 
     public int getId() {
@@ -40,11 +35,4 @@ public class Score {
         this.score = score;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 }
