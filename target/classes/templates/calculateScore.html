@@ -64,26 +64,31 @@
                 <option th:value="2000">12000TL ve üzeri</option>
             </select>
         </div>
+        <div class="col-md-4 mb-3">
+            <label>City</label>
+            <select class="form-control form-control-sm" id="cityName" th:field="*{city}">
+                <option value="0" >Select City</option>
+                <option th:value="6">Ankara</option>
+                <option th:value="35">İzmir</option>
+                <option th:value="34">İstanbul</option>
+                <option th:value="16">Bursa</option>
+                <option th:value="58">Sivas</option>
+            </select>
+        </div>
     <div class="col-md-4 mb-3">
         <label>Mobile Number</label>
         <div class="input-group">
             <input type="text" class="form-control" id="validationTooltip04" placeholder="Enter Mobile Number" aria-describedby="validationTooltipUsernamePrepend" th:field="*{mobilePhoneNumber}"/>
         </div>
     </div>
-    </div>
-    <div class="col-md-4 mb-3">
-        <label>City</label>
-        <select class="form-control form-control-sm" id="cityName" th:object="${cities}">
-            <option value="">Select an agent</option>
-            <option th:each="city:${cities}"
-                    th:value="${city.cityName}"
-                    th:text="${city.cityName}">
-            </option>
-        </select>
+        <form action="#" th:action="@{'/personInformation/'+${person.identity_number}}" th:method="post" >
+            <button class="btn btn-primary" type="submit">Calculate Score</button>
+        </form>
+
     </div>
 
-    <button class="btn btn-primary" type="submit">Calculate Score</button>
 </form>
+
 
 
 

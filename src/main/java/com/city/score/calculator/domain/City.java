@@ -14,8 +14,8 @@ public class City {
     @Column(name="plaqueno")
     private int plaqueno;
 
-    @Column(name="city_name")
-    private String cityName;
+    @Column(name="name")
+    private String name;
 
     public City() {
     }
@@ -45,10 +45,10 @@ public class City {
     }
 
     public String getCityName() {
-        return cityName;
+        return name;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setCityName(String name) {
+        this.name = name;
     }
 }

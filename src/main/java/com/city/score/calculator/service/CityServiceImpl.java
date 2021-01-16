@@ -20,4 +20,11 @@ public class CityServiceImpl implements CityService{
     public List<City> findAll() {
         return cityRepository.findAll();
     }
+
+    @Override
+    public int getScoreByPlaque(int plaqueno) {
+        City city = cityRepository.getCityByPlaque(plaqueno);
+        int score = city.getScore();
+        return score;
+    }
 }

@@ -9,6 +9,7 @@ import com.city.score.calculator.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,22 +34,22 @@ public class PersonController {
 
     @RequestMapping("/calculateScore")
     public ModelAndView getCalculateScorePage(){
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("cities" ,cityService.findAll());
-        model.put("person", new Person());
-        return new ModelAndView("calculateScore", model);
+        return new ModelAndView("calculateScore", "person", new Person());
     }
 
     @RequestMapping(value = "/calculateScore", method = RequestMethod.POST)
-    public void handleItemAssign(@ModelAttribute("person") Person person, @ModelAttribute("cities")City city) {
-        int score = scoreService.getScoreByPersonIdentityNumber(person.getIdentity_number());
-        int salary = person.getSalary();
-        int a =0;
-
+    public String handleItemAssign(@ModelAttribute("person") Person person, BindingResult result) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        int personScore = scoreService.getScoreByPersonIdentityNumber(person.getIdentity_number());
+        String city = person.getCity();
+        int plaqueNo=Integer.parseInt(city);
+        int cityScore = cityService.getScoreByPlaque(plaqueNo);
+        double lastScore = personService.calculateScore(personScore,person.getSalary(),cityScore);
+        person.setScore(lastScore);
+        return "personInformation";
     }
-
-
-
 
 
 }
