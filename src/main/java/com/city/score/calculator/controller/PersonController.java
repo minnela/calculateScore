@@ -31,14 +31,13 @@ public class PersonController {
         this.personService = personService;
         this.scoreService = scoreService;
     }
-
     @RequestMapping("/calculateScore")
     public ModelAndView getCalculateScorePage(){
         return new ModelAndView("calculateScore", "person", new Person());
     }
 
     @RequestMapping(value = "/calculateScore", method = RequestMethod.POST)
-    public String handleItemAssign(@ModelAttribute("person") Person person, BindingResult result) {
+    public String handleItemAssign(@ModelAttribute("person") Person person, BindingResult result) throws ClassNotFoundException {
         if (result.hasErrors()) {
             return "error";
         }
@@ -48,6 +47,7 @@ public class PersonController {
         int cityScore = cityService.getScoreByPlaque(plaqueNo);
         double lastScore = personService.calculateScore(personScore,person.getSalary(),cityScore);
         person.setScore(lastScore);
+        personService.sendSmsToUser(person);
         return "personInformation";
     }
 

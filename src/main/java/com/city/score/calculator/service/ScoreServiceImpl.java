@@ -13,10 +13,14 @@ public class ScoreServiceImpl implements ScoreService{
     public ScoreServiceImpl(ScoreRepository scoreRepository) {
         this.scoreRepository = scoreRepository;
     }
-
     @Override
-    public int getScoreByPersonIdentityNumber(int identityNumber) {
-        Score score = scoreRepository.getById(identityNumber);
-        return score.getScore();
+    public int getScoreByPersonIdentityNumber(int identityNumber) throws ClassNotFoundException {
+        try{
+            Score score = scoreRepository.getById(identityNumber);
+            return score.getScore();
+        }catch(Exception e) {
+            throw new ClassNotFoundException("Person Id is not valid");
+        }
+
     }
 }
