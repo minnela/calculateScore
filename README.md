@@ -68,7 +68,7 @@ You need some prerequisites to download and run the project.
 
 ### Installation
 
-Application works with PostgreSQL, you need to connect your IDE with PostgreSQL. Then clone the repository to your terminal. 
+Application works with PostgreSQL, you need to connect your IDE with PostgreSQL. Then clone the repository by your terminal. 
 
 
 <!-- USAGE EXAMPLES -->
