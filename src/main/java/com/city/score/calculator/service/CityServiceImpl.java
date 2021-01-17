@@ -12,6 +12,9 @@ import java.util.List;
 public class CityServiceImpl implements CityService{
     CityRepository cityRepository;
 
+    public CityServiceImpl() {
+    }
+
     @Autowired
     public CityServiceImpl(CityRepository cityRepository) {
         this.cityRepository = cityRepository;
@@ -31,4 +34,5 @@ public class CityServiceImpl implements CityService{
         }
 
     }
+
 }

@@ -19,6 +19,10 @@ public class Score {
         this.score = score;
     }
 
+    public Score(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

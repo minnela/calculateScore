@@ -20,6 +20,10 @@ public class City {
     public City() {
     }
 
+    public City(int plaqueno) {
+        this.plaqueno = plaqueno;
+    }
+
     public int getId() {
         return id;
     }
